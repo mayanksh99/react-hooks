@@ -1,33 +1,31 @@
-import React, { useState } from "react";
-import AppBar from "@material-ui/core/AppBar";
-import Paper from "@material-ui/core/Paper";
-import Typography from "@material-ui/core/Typography";
-import Toolbar from "@material-ui/core/Toolbar";
-import Grid from "@material-ui/core/Grid";
-import TodoList from "./TodoList";
+import React from "react";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import Checkbox from "@material-ui/core/Checkbox";
+import IconButton from "@material-ui/core/IconButton";
+import DeleteIcon from "@material-ui/icons/Delete";
+import EditIcon from "@material-ui/icons/Edit";
+import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 
-function Todo() {
-  const initialTodos = [
-    { id: 1, task: "Go To Gym", completed: true },
-    { id: 1, task: "Breakfast", completed: false },
-    { id: 1, task: "Coding", completed: false }
-  ];
-  const [todos, setTodos] = useState(initialTodos);
+function Todo({ task, completed }) {
   return (
-    <Paper
-      style={{
-        height: "100vh",
-        backgroundColor: "#fafafa"
-      }}
-      elevation={3}
-    >
-      <AppBar color="primary" position="static" style={{ height: "64px" }}>
-        <Toolbar>
-          <Typography color="inherit">Todos with Hooks</Typography>
-        </Toolbar>
-      </AppBar>
-      <TodoList todos={todos} />
-    </Paper>
+    <ListItem>
+      <Checkbox checked={completed} />
+      <ListItemText
+        style={{ textDecoration: completed ? "line-through" : "none" }}
+      >
+        {task}
+      </ListItemText>
+      <ListItemSecondaryAction>
+        <IconButton aria-label="Delete">
+          <DeleteIcon />
+        </IconButton>
+        <IconButton aria-label="Edit">
+          <EditIcon />
+        </IconButton>
+      </ListItemSecondaryAction>
+    </ListItem>
   );
 }
+
 export default Todo;
