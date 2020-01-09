@@ -24,6 +24,13 @@ function TodoApp() {
     setTodos(updatedTodo);
   };
 
+  const toggleTodo = todoId => {
+    const updatedTodo = todos.map(todo =>
+      todoId === todo.id ? { ...todo, completed: !todo.completed } : todo
+    );
+    setTodos(updatedTodo);
+  };
+
   return (
     <Paper
       style={{
@@ -40,7 +47,11 @@ function TodoApp() {
       <Grid container justify="center" style={{ marginTop: "1rem" }}>
         <Grid item xs={11} md={8} lg={4}>
           <TodoForm addTodo={addTodo} />
-          <TodoList todos={todos} removeTodo={removeTodo} />
+          <TodoList
+            todos={todos}
+            removeTodo={removeTodo}
+            toggleTodo={toggleTodo}
+          />
         </Grid>
       </Grid>
     </Paper>
