@@ -11,9 +11,7 @@ import TodosProvider from "./../contexts/todosContest";
 
 function TodoApp() {
   const initialTodos = JSON.parse(window.localStorage.getItem("todos" || "[]"));
-  const { todos, addTodo, removeTodo, toggleTodo, editTodo } = useTodoState(
-    initialTodos
-  );
+  const { todos } = useTodoState(initialTodos);
 
   useEffect(() => {
     window.localStorage.setItem("todos", JSON.stringify(todos));
@@ -36,12 +34,7 @@ function TodoApp() {
         <Grid item xs={11} md={8} lg={4}>
           <TodosProvider>
             <TodoForm />
-            <TodoList
-              todos={todos}
-              removeTodo={removeTodo}
-              toggleTodo={toggleTodo}
-              editTodo={editTodo}
-            />
+            <TodoList />
           </TodosProvider>
         </Grid>
       </Grid>
