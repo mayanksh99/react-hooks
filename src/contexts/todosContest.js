@@ -11,12 +11,15 @@ const initialTodos = [
 // const initialTodos = JSON.parse(window.localStorage.getItem("todos" || "[]"));
 
 export const TodosContext = createContext();
+export const DispatchContext = createContext();
 
 export default function TodosProvider(props) {
   const [todos, dispatch] = useReducer(reducer, initialTodos);
   return (
-    <TodosContext.Provider value={{ todos, dispatch }}>
-      {props.children}
+    <TodosContext.Provider value={todos}>
+      <DispatchContext.Provider value={dispatch}>
+        {props.children}
+      </DispatchContext.Provider>
     </TodosContext.Provider>
   );
 }

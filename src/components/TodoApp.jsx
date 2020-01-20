@@ -11,7 +11,7 @@ import TodosProvider from "./../contexts/todosContest";
 
 function TodoApp() {
   const initialTodos = JSON.parse(window.localStorage.getItem("todos" || "[]"));
-  const { todos } = useTodoState(initialTodos);
+  const todos = useTodoState(initialTodos);
 
   useEffect(() => {
     window.localStorage.setItem("todos", JSON.stringify(todos));
