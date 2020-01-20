@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from "react";
+import React, { createContext } from "react";
 import useTodoState from "../hooks/useTodoState";
 
 const initialTodos = [
@@ -6,6 +6,9 @@ const initialTodos = [
   { id: 2, task: "Breakfast", completed: false },
   { id: 3, task: "Coding", completed: false }
 ];
+
+// const initialTodos = JSON.parse(window.localStorage.getItem("todos" || "[]"));
+
 export const TodosContext = createContext();
 
 export default function TodosProvider(props) {
